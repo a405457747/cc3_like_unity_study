@@ -39,9 +39,9 @@ export class ResLoad extends Component {
         //     console.log(json.bb);
         // })
 
-        // this.loadSprite("player",(sp)=>{
-        //     this.sp.spriteFrame=sp;
-        // });
+        this.loadSprite("img/red",(sp)=>{
+            this.sp.spriteFrame=sp;
+        });
 
 
         // this.loadPrefab("SpPrefab",(prefab)=>{
@@ -50,10 +50,10 @@ export class ResLoad extends Component {
         // })
 
         
-        this.loadAudioClip("laser",(clip)=>{
-            this.aus.clip=clip;
-            this.aus.play();
-        })
+        // this.loadAudioClip("laser",(clip)=>{
+        //     this.aus.clip=clip;
+        //     this.aus.play();
+        // })
     }
 
     loadText(filePath,func){
