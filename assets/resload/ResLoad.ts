@@ -1,4 +1,4 @@
-import { _decorator, Component,SpriteFrame,Prefab, Node,Sprite,TextAsset,AudioClip, resources, RichText, JsonAsset, AudioSource, instantiate } from 'cc';
+import { _decorator, Component,SpriteFrame,Prefab,Texture2D,  Node,Sprite,TextAsset,AudioClip, resources, RichText, JsonAsset, AudioSource, instantiate } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('ResLoad')
@@ -44,13 +44,22 @@ export class ResLoad extends Component {
 
         //this.sp.spriteFrame=this.wantSf;
 
-        this.rt.string="";
-        resources.load("img/red",SpriteFrame,(err,res)=>{
+        // this.rt.string="";
+        // resources.load("22",SpriteFrame,(err,res)=>{
+        //     if(err){
+        //         console.log("eee",err);
+        //     }else {
+        //         console.log(res);
+        //     }
+        // });
+
+        resources.load("test_assets/image/22", SpriteFrame, (err, spriteFrame) => {
+
             if(err){
-                console.log("eee",err);
-            }else {
-                console.log(res);
+                console.log(err);
+                return;
             }
+            this.node.getComponent(Sprite).spriteFrame = spriteFrame;
         });
 
 
