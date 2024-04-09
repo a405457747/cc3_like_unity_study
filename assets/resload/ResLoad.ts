@@ -1,4 +1,4 @@
-import { _decorator, Component,SpriteFrame,Prefab,Texture2D,  Node,Sprite,TextAsset,AudioClip, resources, RichText, JsonAsset, AudioSource, instantiate } from 'cc';
+import { _decorator, Component,SpriteFrame,Prefab,Texture2D,  ImageAsset,Node,Sprite,TextAsset,AudioClip, resources, RichText, JsonAsset, AudioSource, instantiate } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('ResLoad')
@@ -53,15 +53,10 @@ export class ResLoad extends Component {
         //     }
         // });
 
-        resources.load("test_assets/image/22", SpriteFrame, (err, spriteFrame) => {
 
-            if(err){
-                console.log(err);
-                return;
-            }
-            this.node.getComponent(Sprite).spriteFrame = spriteFrame;
-        });
-
+        this.loadSprite("red",(res)=>{
+            this.node.getComponent(Sprite).spriteFrame=res;
+        })
 
         // this.loadPrefab("SpPrefab",(prefab)=>{
         //    let n= instantiate(prefab);
@@ -90,12 +85,12 @@ export class ResLoad extends Component {
     }
 
     loadSprite(filePath,func){
-        resources.load(filePath, SpriteFrame, function (err, asset:SpriteFrame) {
+        resources.load(filePath, ImageAsset, function (err, asset:ImageAsset) {
             if(err) {
                 console.log("load sp error");
                 return;
             }
-            func(asset);
+            func( SpriteFrame.createWithImage(asset));
         });
     }
 
