@@ -1,4 +1,4 @@
-import { _decorator, Component,SpriteFrame, Node,Sprite,TextAsset,AudioClip, resources, RichText, JsonAsset, AudioSource } from 'cc';
+import { _decorator, Component,SpriteFrame,Prefab, Node,Sprite,TextAsset,AudioClip, resources, RichText, JsonAsset, AudioSource, instantiate } from 'cc';
 const { ccclass, property } = _decorator;
 
 @ccclass('ResLoad')
@@ -39,14 +39,21 @@ export class ResLoad extends Component {
         //     console.log(json.bb);
         // })
 
-        this.loadSprite("red",(sp)=>{
-            this.sp.spriteFrame=sp;
-        });
+        // this.loadSprite("player",(sp)=>{
+        //     this.sp.spriteFrame=sp;
+        // });
 
-        // this.loadAudioClip("laser",(clip)=>{
-        //     this.aus.clip=clip;
-        //     this.aus.play();
+
+        // this.loadPrefab("SpPrefab",(prefab)=>{
+        //    let n= instantiate(prefab);
+        //    this.node.addChild(n);
         // })
+
+        
+        this.loadAudioClip("laser",(clip)=>{
+            this.aus.clip=clip;
+            this.aus.play();
+        })
     }
 
     loadText(filePath,func){
@@ -64,7 +71,7 @@ export class ResLoad extends Component {
     }
 
     loadSprite(filePath,func){
-        resources.load(filePath, SpriteFrame, function (err, asset) {
+        resources.load(filePath, SpriteFrame, function (err, asset:SpriteFrame) {
             if(err) {
                 console.log("load sp error");
                 return;
@@ -75,6 +82,13 @@ export class ResLoad extends Component {
 
     loadAudioClip(filePath,func){
         resources.load(filePath, AudioClip, function (err, asset) {
+            if(err) return;
+            func( asset);
+        });
+    }
+
+    loadPrefab(filePath,func){
+        resources.load(filePath, Prefab, function (err, asset) {
             if(err) return;
             func( asset);
         });
