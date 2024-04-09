@@ -14,6 +14,9 @@ export class ResLoad extends Component {
     @property(AudioSource)
     aus:AudioSource|null=null;
 
+    @property(SpriteFrame)
+    wantSf:SpriteFrame|null=null;
+
     start() {
         // assetManager.resources.load("laser",(err,res)=>{
         //     if(err) return;
@@ -39,8 +42,15 @@ export class ResLoad extends Component {
         //     console.log(json.bb);
         // })
 
-        this.loadSprite("img/red",(sp)=>{
-            this.sp.spriteFrame=sp;
+        //this.sp.spriteFrame=this.wantSf;
+
+        this.rt.string="";
+        resources.load("img/red",SpriteFrame,(err,res)=>{
+            if(err){
+                console.log("eee",err);
+            }else {
+                console.log(res);
+            }
         });
 
 
