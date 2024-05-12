@@ -2,6 +2,12 @@
   "name": "cc3_like_unity_study",
   "uuid": "446290f3-b5c1-4467-a567-347a66e800ab",
   "creator": {
-    "version": "3.8.2"
+    "version": "3.8.2",
+    "registry": {
+      "remote": {}
+    },
+    "dependencies": {
+      "localization-editor": "1.0.1"
+    }
   }
 }
