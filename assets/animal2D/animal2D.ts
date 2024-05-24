@@ -4,7 +4,7 @@ const { ccclass, property } = _decorator;
 @ccclass('animal2D')
 export class animal2D extends Component {
     anim:Animation=null;
-    start() {
+    onLoad() {
         this.anim=this.getComponent(Animation);
 
         this.anim.play("topbottom");
